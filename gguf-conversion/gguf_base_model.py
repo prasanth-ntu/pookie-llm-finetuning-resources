@@ -48,17 +48,16 @@ def convert_base_model_gguf(
 
 @app.local_entrypoint()
 def main():
-    hf_model_repo = "meta-llama/Llama-3.2-3B"
-    save_model_repo = "pookie3000/Llama-3.2-3B-guide-GGUF"
+    hf_model_repo = "meta-llama/Llama-3.2-3B" # Base model
+    save_model_repo = "prasanthntu/Llama-3.2-3B-guide-GGUF" # Save model
     quantization_method = "not_quantized"
     load_in_4bit = False
     convert_base_model_gguf.remote(
         hf_model_repo=hf_model_repo,
         save_model_repo=save_model_repo,
-        quantization_method=quantization_method,
-        load_in_4bit=load_in_4bit,
+        quantization_method=quantization_method, # No quantization
+        load_in_4bit=load_in_4bit, # Do not load in 4bit, rather load it fully
     )
 
-
-# run using
+# run using the below command in terminal (takes ~5 mins to complete)
 # modal run gguf-conversion/gguf_base_model.py
